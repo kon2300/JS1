@@ -1,27 +1,32 @@
-  const taskList = () => {
-  console.log('============================');
-  console.log('現在持っているのタスク一覧');
-  console.log('============================');
-  };
-  taskList();
+const taskList = () => {
+  console.log(`
+  ===================
+  現在持っているのタスク
+  ===================
+  `);
+};
+taskList();
 
-  let currentTask = [
-    "掃除", "買い物", "散歩"
-  ];
-  
-  let i = 0;
-  for (let i = 0; i < currentTask.length; i++) {
-    console.log(i + ' : ' + currentTask[i]);
-  };
-  
-  const newTask = prompt('タスクを入力してください');
-  currentTask.push(newTask);
-  alert('新しいタスクを追加しました。');
+const currentTask = [
+  {content: '机を片付ける', genre: '掃除'},
+  {content: '牛乳を買う', genre: '買い物'},
+  {content: '散歩する', genre: '運動'}
+];
 
-  taskList();
+const taskDisplay = () => { 
+  currentTask.forEach ((task , index) => {
+    console.log(`${index} : [内容] ${task.content},[ジャンル] ${task.genre}`);
+  });
+};
+taskDisplay();
 
-  for (let int = 0; int < currentTask.length; int++) {
-    console.log(int + ' : ' + currentTask[int]);
-  };
+const newTask = prompt('タスクを入力してください');
+const newGenre = prompt('ジャンルを入力してください');
+currentTask.push({content: newTask, genre: newGenre});
+alert('新しいタスクを追加しました');
 
-  const next = prompt('「確認,追加,削除,終了」の４つのいずれかを入力してください');
+taskList();
+
+taskDisplay();
+
+prompt('「確認,追加,削除,終了」の４つのいずれかを入力してください');
